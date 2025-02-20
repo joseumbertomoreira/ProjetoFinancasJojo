@@ -5,13 +5,7 @@ namespace MainProject.Models;
 public class ClasseCompra
 {
 
-    public int Id { get; set;}
-
-    [Display(Name = "Nome da Classe Compra")]
-    [Required(ErrorMessage = "O campo {0} é obrigatório")]
-    public string Nome { get; set; }
-
-    [Display(Name = "Descrição da Classe Compra")]
-    [Required(ErrorMessage = "O campo {0} é obrigatório")]
+    public int Id { get; set;}            
+    public string Nome { get; set; }        
     public string Descricao { get; set; }
 }
