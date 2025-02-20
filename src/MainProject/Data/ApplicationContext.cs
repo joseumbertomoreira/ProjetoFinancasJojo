@@ -8,6 +8,7 @@ public class ApplicationContext : DbContext
 {
 
     public DbSet<ClasseCompra> ClassesCompra { get; set; }
+    public DbSet<TipoPagamento> TiposPagamento { get; set; }
 
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
 
@@ -15,6 +16,7 @@ public class ApplicationContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new ClasseCompraConfiguration());
+        modelBuilder.ApplyConfiguration(new TipoPagamentoConfiguration());
     }
 
 }

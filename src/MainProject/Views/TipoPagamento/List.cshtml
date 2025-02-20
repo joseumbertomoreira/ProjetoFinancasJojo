@@ -1,9 +1,9 @@
-@using MainProject.ViewModel
-@model IEnumerable<ClasseCompraViewModel>
+ï»¿@using MainProject.ViewModel
+@model IEnumerable<TipoPagamentoViewModel>
 
-<h1>Lista Classe Compra</h1>
+<h1>Lista de Tipos de Pagamento</h1>
 
-<a class="btn btn-success" asp-controller="ClasseCompra" asp-action="Create" role="button">
+<a class="btn btn-success" asp-controller="TipoPagamento" asp-action="Create" role="button">
     Criar
 </a>
 
@@ -14,7 +14,7 @@
             <tr>
                 <th>@Html.DisplayNameFor(model => model.First().Nome)</th>
                 <th>@Html.DisplayNameFor(model => model.First().Descricao)</th>
-                <th>Ações</th>
+                <th>AÃ§Ãµes</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                     <td>@item.Nome</td>
                     <td>@item.Descricao</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>                    
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
                         <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
@@ -34,5 +34,5 @@
 }
 else
 {
-    <p>Nenhuma classe de compra encontrada.</p>
+    <p>Nenhum tipo de pagamento encontrado.</p>
 }
