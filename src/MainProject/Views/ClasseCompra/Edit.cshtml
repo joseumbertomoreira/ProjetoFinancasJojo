@@ -1,9 +1,9 @@
-@using MainProject.ViewModel
+﻿@using MainProject.ViewModel
 @model ClasseCompraViewModel
 
 <div class="row">
-    <h1>Criar uma Classe de Compra</h1>
-    <form asp-action="Create" method="post">
+    <h1>Editar uma Classe de Compra</h1>
+    <form asp-action="Edit" method="post">
         <div class="row">
 
             <div class="col-3 mb-3">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="row">
-            
+
             <div class="col-6 mb-3">
                 <label asp-for="Descricao" class="form-label"></label>
                 <input asp-for="Descricao" class="form-control" />

@@ -38,7 +38,7 @@ public class ClasseCompraController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")]ClasseCompraViewModel classeCompraViewModel)
+    public IActionResult Create([Bind("Id,Nome,Descricao")]ClasseCompraViewModel classeCompraViewModel)
     {
         if(!ModelState.IsValid)
         {
@@ -52,6 +52,58 @@ public class ClasseCompraController : Controller
         };
 
         _context.ClassesCompra.Add(classeCompra);
+        _context.SaveChanges();
+
+        return RedirectToAction(nameof(List));
+
+    }
+
+    public IActionResult Edit(int id)
+    {
+
+        var classeCompra = _context.ClassesCompra.Find(id);
+
+        var classeCompraViewModel = new ClasseCompraViewModel()
+        {
+            Id = classeCompra.Id,
+            Nome = classeCompra.Nome,
+            Descricao = classeCompra.Descricao
+        };
+
+        return View(classeCompraViewModel);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit([Bind("Id,Nome,Descricao")] ClasseCompraViewModel classeCompraViewModel)
+    {
+
+        if (!ModelState.IsValid)
+        {
+            return View(classeCompraViewModel);
+        }
+
+        var classeCompra = new ClasseCompra()
+        {
+            Id = classeCompraViewModel.Id,
+            Nome = classeCompraViewModel.Nome,
+            Descricao = classeCompraViewModel.Descricao
+        };
+
+
+        _context.ClassesCompra.Update(classeCompra);
+        _context.SaveChanges();
+
+        return RedirectToAction(nameof(List));
+
+    }
+
+    public IActionResult Delete(int id)
+    {
+
+        var classeCompra = _context.ClassesCompra.Find(id);
+
+        _context.ClassesCompra.Remove(classeCompra);
         _context.SaveChanges();
 
         return RedirectToAction(nameof(List));
