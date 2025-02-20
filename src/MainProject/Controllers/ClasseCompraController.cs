@@ -18,7 +18,17 @@ public class ClasseCompraController : Controller
 
     public IActionResult List()
     {
-        return View();
+
+        var listaClasseCompra = _context.ClassesCompra
+            .Select(c => new ClasseCompraViewModel
+            {
+                Id = c.Id,
+                Nome = c.Nome,
+                Descricao = c.Descricao
+            })
+            .ToList();
+
+        return View(listaClasseCompra);
     }
 
     public IActionResult Create()
@@ -42,6 +52,7 @@ public class ClasseCompraController : Controller
         };
 
         _context.ClassesCompra.Add(classeCompra);
+        _context.SaveChanges();
 
         return RedirectToAction(nameof(List));
 
