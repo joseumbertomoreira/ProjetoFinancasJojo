@@ -1,0 +1,76 @@
+﻿@using MainProject.ViewModel
+@model CompraViewModel
+
+<div class="row">
+
+    <h1>Criar uma Compra</h1>
+
+    <form asp-action="Create" method="post">
+
+        <div class="row">
+
+            <div class="col-6 mb-3">
+                <label asp-for="Descricao" class="form-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-4 mb-3">
+                <label asp-for="ClasseCompraId" class="form-label"></label>
+                <select asp-for="ClasseCompraId" class="form-select" asp-items="@(new SelectList(ViewBag.ClassesCompra, "Id", "Nome"))">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="ClasseCompraId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-4 mb-3">
+                <label asp-for="Valor" class="form-label"></label>
+                <input asp-for="Valor" class="form-control" type="text" lang="pt-BR" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label asp-for="QtdParcela" class="form-label"></label>
+                <input asp-for="QtdParcela" class="form-control" />
+                <span asp-validation-for="QtdParcela" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label asp-for="ParcelasPagas" class="form-label"></label>
+                <input asp-for="ParcelasPagas" class="form-control" />
+                <span asp-validation-for="ParcelasPagas" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-4 mb-3">
+                <label asp-for="DataCompra" class="form-label"></label>
+                <input asp-for="DataCompra" class="form-control" />
+                <span asp-validation-for="DataCompra" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-1 mr-2">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+
+            <div class="col-1">
+                <a class="btn btn-danger" asp-controller="Compra" asp-action="List" role="button">
+                    Cancelar
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+</div>

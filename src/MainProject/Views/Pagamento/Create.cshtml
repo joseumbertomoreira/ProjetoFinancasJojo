@@ -1,0 +1,58 @@
+﻿@using MainProject.ViewModel
+@model PagamentoViewModel
+
+<div class="row">
+
+    <h1>Criar um Pagamento</h1>
+
+    <form asp-action="Create" method="post">
+
+        <div class="row">
+
+            <div class="col-4 mb-3">
+                <label asp-for="Valor" class="form-label"></label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label asp-for="TipoPagamentoId" class="form-label"></label>
+                <select asp-for="TipoPagamentoId" class="form-select" asp-items="@(new SelectList(ViewBag.TiposPagamento, "Id", "Nome"))">
+                    <option value="">Selecione uma opção</option>
+                </select>
+                <span asp-validation-for="TipoPagamentoId" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-4 mb-3">
+                <label asp-for="NumeroParcela" class="form-label"></label>
+                <input asp-for="NumeroParcela" class="form-control" />
+                <span asp-validation-for="NumeroParcela" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 mb-3">
+                <label asp-for="DataPagamento" class="form-label"></label>
+                <input asp-for="DataPagamento" class="form-control" />
+                <span asp-validation-for="DataPagamento" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-1 mr-2">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+
+            <div class="col-1">
+                <a class="btn btn-danger" asp-controller="Compra" asp-action="List" role="button">
+                    Cancelar
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+</div>

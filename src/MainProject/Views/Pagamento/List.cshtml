@@ -1,0 +1,8 @@
+﻿@using MainProject.ViewModel
+@model ListaPagamentosViewModel
+
+<h1>Lista de Pagamentos</h1>
+
+<a class="btn btn-success" asp-controller="Pagamento" asp-action="Create" asp-route-id="@Model.Pagamentos.First().CompraId" role="button">
+    Pagar
+</a>

@@ -1,0 +1,47 @@
+﻿@using MainProject.ViewModel
+@model IEnumerable<CompraViewModel>
+
+<h1>Lista de Compras</h1>
+
+<a class="btn btn-success" asp-controller="Compra" asp-action="Create" role="button">
+    Criar
+</a>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().Descricao)</th>
+                <th>@Html.DisplayNameFor(model => model.First().Valor)</th>
+                <th>@Html.DisplayNameFor(model => model.First().ClasseCompraId)</th>
+                <th>@Html.DisplayNameFor(model => model.First().QtdParcela)</th>
+                <th>@Html.DisplayNameFor(model => model.First().ParcelasPagas)</th>
+                <th>@Html.DisplayNameFor(model => model.First().DataCompra)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Descricao</td>
+                    <td>@item.Valor</td>
+                    <td>@item.ClasseCompra.Nome</td>
+                    <td>@item.QtdParcela</td>
+                    <td>@item.ParcelasPagas</td>
+                    <td>@item.DataCompra</td>
+                    <td>
+                        <a asp-area="" asp-controller="Pagamento" asp-action="List" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Pagamentos</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma classe de compra encontrada.</p>
+}
