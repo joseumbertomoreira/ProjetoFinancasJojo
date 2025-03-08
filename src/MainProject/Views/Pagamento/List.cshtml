@@ -3,6 +3,40 @@
 
 <h1>Lista de Pagamentos</h1>
 
-<a class="btn btn-success" asp-controller="Pagamento" asp-action="Create" asp-route-id="@Model.Pagamentos.First().CompraId" role="button">
+<a class="btn btn-success" asp-controller="Pagamento" asp-action="Create" asp-route-id="@Model.CompraId" role="button">
     Pagar
 </a>
+
+@if (Model != null && Model.Pagamentos.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Pagamentos.First().Valor)</th>                
+                <th>@Html.DisplayNameFor(model => model.Pagamentos.First().NumeroParcela)</th>
+                <th>@Html.DisplayNameFor(model => model.Pagamentos.First().TipoPagamento.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Pagamentos.First().DataPagamento)</th>                
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Pagamentos)
+            {
+                <tr>                    
+                    <td>@item.Valor</td>
+                    <td>@item.NumeroParcela</td>
+                    <td>@item.TipoPagamento.Nome</td>
+                    <td>@item.DataPagamento</td>                    
+                    <td>                        
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma pagamento encontrado.</p>
+}

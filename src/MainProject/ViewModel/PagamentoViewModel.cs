@@ -23,7 +23,7 @@ public class PagamentoViewModel
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
     public int NumeroParcela { get; set; }
 
-    [Display(Name = "Data da Compra")]
+    [Display(Name = "Data do Pagamento")]
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
     [DataType(DataType.Date)] // Define que é uma data
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

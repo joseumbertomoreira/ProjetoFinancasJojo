@@ -5,7 +5,7 @@
 
     <h1>Criar um Pagamento @Model.CompraId</h1>
 
-    <form asp-action="Create" method="post">
+    <form asp-area="" asp-controller="Pagamento" asp-action="Edit" method="post">
 
         <input type="hidden" asp-for="CompraId" />
 
@@ -49,7 +49,7 @@
             </div>
 
             <div class="col-1">
-                <a class="btn btn-danger" asp-controller="Compra" asp-action="List" role="button">
+                <a class="btn btn-danger" asp-controller="Pagamento" asp-action="List" role="button">
                     Cancelar
                 </a>
             </div>
